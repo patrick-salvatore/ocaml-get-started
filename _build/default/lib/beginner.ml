@@ -84,11 +84,6 @@ let is_palindrome (l : string list) =
   [(4, "a"); (1, "b"); (2, "c"); (2, "a"); (1, "d"); (4, "e")]
 *)
 
-let update_last_element (lst : 'a list) (new_last : 'a) : 'a list =
-  match List.rev lst with
-  | [] -> failwith "Empty list"
-  | _ :: rev_tail -> List.rev (new_last :: rev_tail)
-
 let run_length_ecoding (l : string list) =
   let rec encode_aux l c acc =
     match l with
@@ -98,4 +93,4 @@ let run_length_ecoding (l : string list) =
     | [ x ] -> (c + 1, x) :: acc
     | [] -> []
   in
-  encode_aux l 0 []
+  List.rev (encode_aux l 0 [])

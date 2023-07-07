@@ -93,4 +93,4 @@ let run_length_ecoding (l : string list) =
     | [ x ] -> (c + 1, x) :: acc
     | [] -> []
   in
-  encode_aux l 0 []
+  List.rev (encode_aux l 0 [])

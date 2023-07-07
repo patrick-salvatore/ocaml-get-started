@@ -1,6 +1,6 @@
 let print_list (lst : 'a list) : unit =
-  print_string "[";
-  List.iter (fun x -> print_string (x ^ ",")) lst;
+  print_string "[ ";
+  List.iter (fun x -> print_string (x ^ " ; ")) lst;
   print_string "]";
   print_newline ()
 
@@ -10,10 +10,12 @@ let print_list_of_tuples (lst : ('a * 'b) list) : unit =
     print_int x;
     print_string ", ";
     print_string y;
-    print_string ")";
-    print_newline ()
+    print_string "),";
   in
-  List.iter print_tuple lst
+  print_string "[";
+  List.iter print_tuple lst;
+  print_endline "]";
+;;
 
 let print_function_result (f : 'a list -> ('a * 'a) option) (lst : 'a list) :
     unit =
